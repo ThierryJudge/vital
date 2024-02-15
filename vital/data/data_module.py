@@ -4,7 +4,7 @@ from argparse import ArgumentParser
 from typing import Dict
 
 import pytorch_lightning as pl
-from pytorch_lightning.utilities.argparse import add_argparse_args
+# from pytorch_lightning.utilities.argparse import add_argparse_args
 from torch.utils.data import DataLoader, Dataset
 
 from vital.data.config import DataParameters, Subset
@@ -42,7 +42,7 @@ class VitalDataModule(pl.LightningDataModule, ABC):
             batch_size=self.batch_size,
             shuffle=shuffle,
             num_workers=self.num_workers,
-            pin_memory=True,
+            pin_memory=False,
             persistent_workers=bool(self.num_workers),
         )
 
@@ -55,6 +55,6 @@ class VitalDataModule(pl.LightningDataModule, ABC):
     def test_dataloader(self) -> DataLoader:  # noqa: D102
         return self._dataloader(Subset.TEST)
 
-    @classmethod
-    def add_argparse_args(cls, parent_parser: ArgumentParser, **kwargs) -> ArgumentParser:  # noqa: D102
-        return add_argparse_args(cls, add_argparse_args(VitalDataModule, parent_parser))
+    # @classmethod
+    # def add_argparse_args(cls, parent_parser: ArgumentParser, **kwargs) -> ArgumentParser:  # noqa: D102
+    #     return add_argparse_args(cls, add_argparse_args(VitalDataModule, parent_parser))
