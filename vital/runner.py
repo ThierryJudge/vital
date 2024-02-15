@@ -12,7 +12,7 @@ import torch
 from dotenv import load_dotenv
 from omegaconf import DictConfig, open_dict
 from pytorch_lightning import Trainer, seed_everything
-from pytorch_lightning.loggers import CometLogger, LightningLoggerBase
+from pytorch_lightning.loggers import CometLogger, Logger
 
 from vital.data.data_module import VitalDataModule
 from vital.system import VitalSystem
@@ -158,7 +158,7 @@ class VitalRunner(ABC):
         return cfg
 
     @staticmethod
-    def configure_logger(cfg: DictConfig) -> Union[bool, LightningLoggerBase]:
+    def configure_logger(cfg: DictConfig) -> Union[bool, Logger]:
         """Initializes Lightning logger.
 
         Args:
