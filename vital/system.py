@@ -23,7 +23,7 @@ class VitalSystem(pl.LightningModule, ABC):
     """
 
     def __init__(
-        self, model: DictConfig, optim: DictConfig, choices: DictConfig, data_params: DataParameters, **kwargs
+            self, model: DictConfig, optim: DictConfig, choices: DictConfig, data_params: DataParameters, **kwargs
     ):
         """Saves the system's configuration in `hparams`.
 
@@ -80,7 +80,7 @@ class VitalSystem(pl.LightningModule, ABC):
         )
 
     def configure_optimizers(
-        self, params: Union[Iterable[Tensor], Iterable[dict]] = None
+            self, params: Union[Iterable[Tensor], Iterable[dict]] = None
     ) -> Dict[Literal["optimizer", "lr_scheduler"], Any]:
         """Configures optimizers/LR schedulers based on hydra config.
 
